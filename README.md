@@ -1,7 +1,9 @@
 # DevOps-Zero-Advance
 
-https://www.udemy.com/course/decodingdevops/
-Credits: Iram
+## https://www.udemy.com/course/decodingdevops/
+
+## Credits: Iram
+
 This course is for anybody who wants to get started with DevOps:
 
 As there are many tools & technologies in DevOps, it has become difficult for people to choose the right technologies.
