@@ -1,0 +1,3 @@
+pool "{{ ntp0 }}" iburst
+pool "{{ ntp1 }}" iburst
+pool "{{ ntp2 }}" iburst

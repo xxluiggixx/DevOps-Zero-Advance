@@ -1,0 +1,14 @@
+all:
+  hosts:
+    saplic01:
+      ansible_host: 10.19.240.41
+      ansible_user:	root
+      ansible_ssh_private_key_file: client_rsa
+    saplic02:
+      ansible_host: 10.19.240.42
+      ansible_user:	root
+      ansible_ssh_private_key_file: client_rsa
+    saplic03:
+      ansible_host: 10.19.240.43
+      ansible_user:	root
+      ansible_ssh_private_key_file: client_rsa

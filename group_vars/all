@@ -1,0 +1,6 @@
+dbname: sky
+dbuser: pilot
+dbpass: aircraft
+ntp0: 2.ar.pool.ntp.org
+ntp1: 1.south-america.pool.ntp.org
+ntp2: 0.south-america.pool.ntp.org

@@ -1,0 +1,64 @@
+all:
+  hosts:
+    saplic01:
+      ansible_host: 10.19.240.41
+    saplic02:
+      ansible_host: 10.19.240.42
+    saplic03:
+      ansible_host: 10.19.240.43
+    saplic04:
+      ansible_host: 10.19.240.44
+    saplic05:
+      ansible_host: 10.19.240.45
+    saplic06:
+      ansible_host: 10.19.240.46
+    saplic01-interior:
+      ansible_host: 10.19.240.47
+    saplic02-interior:
+      ansible_host: 10.19.240.48
+    ie-01:
+      ansible_host: 10.18.250.240
+    ie-02:
+      ansible_host: 10.18.250.239
+    ie-03:
+      ansible_host: 10.18.250.238
+    ws-denuncias-tartagal:
+      ansible_host: 10.19.240.70
+    ws-denuncias-metan:
+      ansible_host: 10.19.240.71
+    ws-denuncias-oran:
+      ansible_host: 10.19.240.72
+    ws-denuncias-jvg:
+      ansible_host: 10.19.240.73
+# Create Group Server
+  children:
+    chromium:
+      hosts:
+        saplic01:
+        saplic02:
+        saplic03:
+        saplic04:
+        saplic05:
+        saplic06:
+    ie:
+      hosts:
+        ie-01:
+        ie-02:
+        ie-03:
+    interior:
+      hosts:
+        saplic01-interior:
+        saplic02-interior:
+    ws-denuncias:
+      hosts:
+        ws-denuncias-tartagal:
+        ws-denuncias-jvg:
+        ws-denuncias-metan:
+        ws-denuncias-oran:
+    webservers:
+      children:
+        hosts:
+          chromium:
+          ie:
+          interior:
+          ws-denuncias:
