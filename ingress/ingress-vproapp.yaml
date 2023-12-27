@@ -1,0 +1,21 @@
+--- 
+#https://kubernetes.github.io/ingress-nginx/user-guide/basic-usage/
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vpro-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: vproapp.justiciasalta.gov.ar #LB del ingress-nginx
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: my-app
+            port:
+              number: 8080
