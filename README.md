@@ -29,3 +29,23 @@ For this project
     c. Jenkinsfile (Pipeline code)
 13. Create Jenkins job for pipeline
 14. Run & Test the job.
+
+## Jenkins
+Install some plungins
+- Pipeline Utility Steps
+
+## Repositories
+- clone -b vp-docker https://github.com/devopshydclub/vprofile-project.git 
+
+```
+    helm create vprofilecharts
+    cd helm/vprofilechrts/templates
+    vim vproappdep.yml
+        appimage: {{ .Values.appimage }}
+```
+#install with helm
+```
+helm install --namespace test vprofile-stack helm/vprofilecharts --set appimage=imranvisualpath/vproappdock:9
+```
+##Issues
+Add webhook on sonarQube from jenkins server, because sonarQube dont know where notify his job
