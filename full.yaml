@@ -1,0 +1,60 @@
+Parameters:
+  InstanceTypeParameter:
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+      - t2.micro
+      - m1.small
+      - m1.large
+    Description: Enter t2.micro, m1.small, or m1.large. Default is t2.micro.
+Mappings: 
+  AmiRegionMap: 
+    us-east-1: 
+      AMI: "ami-0ff8a91507f77f867"
+    us-west-1: 
+      AMI: "ami-0bdb828fd58c52235"
+    eu-west-1: 
+      AMI: "ami-047bb4163c506cd98"
+    ap-southeast-1: 
+      AMI: "ami-08569b978cc4dfa10"
+    ap-northeast-1: 
+      AMI: "ami-06cd52961ce9f0d85"
+Resources:
+  MyInstance:
+    Type: AWS::EC2::Instance
+    Metadata:
+      AWS::CloudFormation::Init:
+        config:
+          packages:
+          groups:
+          users:
+          files:
+          commands:
+    Properties:
+      InstanceType: t2.micro
+      ImageId: !FindInMap
+        - AmiRegionMap
+        - !Ref AWS::Region
+        - AMI
+      Tags:
+        - Key: "Name"
+          Value: !Join
+            - " "
+            - - "My Instance in"
+              - !Ref AWS::Region
+      SecurityGroups:
+        - !Ref VprofileSG
+  VprofileSG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+    GroupDescription: Allow http to client host
+    SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 80
+        ToPort: 80
+        CidrIp: 0.0.0.0/0
+Outputs:
+  PrintSomeInfo:
+    Value: !GetAtt
+      - MyInstance
+      - PublicDnsName
